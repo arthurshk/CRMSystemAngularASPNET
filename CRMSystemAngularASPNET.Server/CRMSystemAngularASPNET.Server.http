@@ -1,0 +1,6 @@
+@CRMSystemAngularASPNET.Server_HostAddress = http://localhost:5188
+
+GET {{CRMSystemAngularASPNET.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
