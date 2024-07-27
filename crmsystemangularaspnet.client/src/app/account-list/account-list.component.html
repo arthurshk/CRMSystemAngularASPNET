@@ -1,0 +1,21 @@
+<div *ngIf="accounts?.length; else noAccounts">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.id }}</td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noAccounts>
+  <p>No accounts available.</p>
+</ng-template>
