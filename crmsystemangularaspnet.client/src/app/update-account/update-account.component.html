@@ -1,0 +1,5 @@
+<form *ngIf="account" (ngSubmit)="onSubmit()">
+  <input [(ngModel)]="account.name" placeholder="Name" name="name" required />
+  <input [(ngModel)]="account.industry" placeholder="Industry" name="industry" required />
+  <button type="submit">Update Account</button>
+</form>
