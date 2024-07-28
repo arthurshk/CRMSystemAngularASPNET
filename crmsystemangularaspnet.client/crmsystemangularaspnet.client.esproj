@@ -8,6 +8,6 @@
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist\crmsystemangularaspnet.client\</PublishAssetsDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\account-list\Models\" />
+    <Folder Include="src\app\Models\" />
   </ItemGroup>
 </Project>
