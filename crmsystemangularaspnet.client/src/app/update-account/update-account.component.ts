@@ -9,7 +9,8 @@ import { Account } from '../Models/Account';
   styleUrls: ['./update-account.component.css']
 })
 export class UpdateAccountComponent implements OnInit {
-  account: Account;
+  account: Account | undefined = undefined;
+  id: number | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,20 +18,26 @@ export class UpdateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.accountService.getAccountById(id).subscribe(account => {
-      this.account = account;
-    });
+    this.id = +this.route.snapshot.paramMap.get('id')!; 
+    if (this.id !== null) {
+      this.accountService.getAccountById(this.id).subscribe((account: any) => {
+        this.account = account;
+      });
+    }
   }
 
   onSubmit() {
-    this.accountService.updateAccount(this.account).subscribe(
-      () => {
-        console.log('Account updated');
-      },
-      error => {
-        console.error('Error updating account:', error);
-      }
-    );
+    if (this.account && this.id !== null) {
+      this.accountService.updateAccount(this.id, this.account).subscribe(
+        () => {
+          console.log('Account updated');
+        },
+          (        error: any) => {
+          console.error('Error updating account:', error);
+        }
+      );
+    } else {
+      console.error('Account is not defined');
+    }
   }
 }
