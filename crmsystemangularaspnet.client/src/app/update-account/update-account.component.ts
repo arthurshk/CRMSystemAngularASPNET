@@ -9,7 +9,7 @@ import { Account } from '../Models/Account';
   styleUrls: ['./update-account.component.css']
 })
 export class UpdateAccountComponent implements OnInit {
-  account: Account | undefined = undefined;
+  account: Account | undefined;
   id: number | null = null;
 
   constructor(
@@ -18,9 +18,9 @@ export class UpdateAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id')!; 
+    this.id = +this.route.snapshot.paramMap.get('id')!;
     if (this.id !== null) {
-      this.accountService.getAccountById(this.id).subscribe((account: any) => {
+      this.accountService.getAccountById(this.id).subscribe(account => {
         this.account = account;
       });
     }
@@ -32,7 +32,7 @@ export class UpdateAccountComponent implements OnInit {
         () => {
           console.log('Account updated');
         },
-          (        error: any) => {
+        error => {
           console.error('Error updating account:', error);
         }
       );

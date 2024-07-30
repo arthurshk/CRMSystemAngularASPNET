@@ -8,7 +8,7 @@ import { Account } from '../Models/Account';
   styleUrls: ['./delete-account.component.css']
 })
 export class DeleteAccountComponent implements OnInit {
-  accounts: Account[];
+  accounts: Account[] = [];
 
   constructor(private accountService: AccountService) { }
 

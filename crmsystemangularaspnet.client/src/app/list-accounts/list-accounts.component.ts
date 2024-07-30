@@ -8,8 +8,7 @@ import { Account } from '../Models/Account';
   styleUrls: ['./list-accounts.component.css']
 })
 export class ListAccountsComponent implements OnInit {
-  accounts: Account[];
-
+  accounts: Account[] = [];
   constructor(private accountService: AccountService) { }
 
   ngOnInit() {
