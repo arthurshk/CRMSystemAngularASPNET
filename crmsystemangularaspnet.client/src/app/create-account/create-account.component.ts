@@ -8,17 +8,13 @@ import { Account } from '../Models/Account';
   styleUrls: ['./create-account.component.css']
 })
 export class CreateAccountComponent {
-  account: Account = { name: '', industry: '' };
+  account: Account = { name: '', industry: '', email: '' }; 
+
   constructor(private accountService: AccountService) { }
 
-  onSubmit() {
-    this.accountService.createAccount(this.account).subscribe(
-      createdAccount => {
-        console.log('Account created:', createdAccount);
-      },
-      error => {
-        console.error('Error creating account:', error);
-      }
-    );
+  createAccount() {
+    this.accountService.createAccount(this.account).subscribe(() => {
+      console.log('Account created');
+    });
   }
 }
