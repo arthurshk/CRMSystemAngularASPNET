@@ -1,5 +1,4 @@
 <div *ngFor="let account of accounts">
-  {{ account.name }} - {{ account.industry }}
-  <button (click)="deleteAccount(account.id)">Delete</button>
-
+  <div>{{ account.name }} ({{ account.email }})</div>
+  <button (click)="deleteAccount(account.id!)">Delete</button> 
 </div>
