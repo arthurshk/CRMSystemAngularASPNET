@@ -3,12 +3,12 @@ import { AccountService } from '../account.service';
 import { Account } from '../Models/Account';
 
 @Component({
-  selector: 'app-account-list',
-  templateUrl: './account-list.component.html',
-  styleUrls: ['./account-list.component.css']
+  selector: 'app-list-accounts',
+  templateUrl: './list-accounts.component.html',
+  styleUrls: ['./list-accounts.component.css']
 })
-export class AccountListComponent implements OnInit {
-  accounts: Account[] = [];
+export class ListAccountsComponent implements OnInit {
+  accounts!: Account[];
 
   constructor(private accountService: AccountService) { }
 

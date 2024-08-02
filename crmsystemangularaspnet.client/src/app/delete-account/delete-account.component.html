@@ -1,4 +1,6 @@
-<div *ngFor="let account of accounts">
-  <div>{{ account.name }} ({{ account.email }})</div>
-  <button (click)="deleteAccount(account.id!)">Delete</button> 
+<h2>Delete Account</h2>
+<div *ngIf="account">
+  <p>Are you sure you want to delete {{ account.name }}?</p>
+  <button (click)="deleteAccount(account.id)">Yes</button>
+  <button (click)="router.navigate(['/list-accounts'])">No</button>
 </div>

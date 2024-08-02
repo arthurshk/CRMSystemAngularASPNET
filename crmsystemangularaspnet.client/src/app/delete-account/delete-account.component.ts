@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { Account } from '../Models/Account';
 
@@ -7,26 +8,15 @@ import { Account } from '../Models/Account';
   templateUrl: './delete-account.component.html',
   styleUrls: ['./delete-account.component.css']
 })
-export class DeleteAccountComponent implements OnInit {
-  accounts: Account[] = [];
+export class DeleteAccountComponent {
+  @Input() account!: Account;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
-  ngOnInit() {
-    this.accountService.getAccounts().subscribe(accounts => {
-      this.accounts = accounts;
-    });
-  }
-
-  deleteAccount(id: number | undefined) {
-    if (id === undefined) {
-      console.error('Account ID is undefined');
-      return;
-    }
-
+  deleteAccount(id: number) {
     this.accountService.deleteAccount(id).subscribe(() => {
       console.log('Account deleted');
-      this.accounts = this.accounts.filter(account => account.id !== id);
+      this.router.navigate(['/list-accounts']);
     });
   }
 }

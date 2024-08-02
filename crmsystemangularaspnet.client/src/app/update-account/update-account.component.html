@@ -1,5 +1,36 @@
-<form *ngIf="account" (ngSubmit)="onSubmit()">
-  <input [(ngModel)]="account.name" placeholder="Name" name="name" required />
-  <input [(ngModel)]="account.industry" placeholder="Industry" name="industry" required />
-  <button type="submit">Update Account</button>
+<h2>Edit Account</h2>
+<form [formGroup]="editAccountForm" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input formControlName="name" />
+  </label>
+  <div *ngIf="editAccountForm.get('name')?.invalid && editAccountForm.get('name')?.touched">
+    Name is required.
+  </div>
+
+  <label>
+    Email:
+    <input formControlName="email" />
+  </label>
+  <div *ngIf="editAccountForm.get('email')?.invalid && editAccountForm.get('email')?.touched">
+    Enter a valid email.
+  </div>
+
+  <label>
+    Age:
+    <input formControlName="age" type="number" />
+  </label>
+  <div *ngIf="editAccountForm.get('age')?.invalid && editAccountForm.get('age')?.touched">
+    Enter a valid age.
+  </div>
+
+  <label>
+    Address:
+    <input formControlName="address" />
+  </label>
+  <div *ngIf="editAccountForm.get('address')?.invalid && editAccountForm.get('address')?.touched">
+    Address is required.
+  </div>
+
+  <button type="submit" [disabled]="editAccountForm.invalid">Save Changes</button>
 </form>

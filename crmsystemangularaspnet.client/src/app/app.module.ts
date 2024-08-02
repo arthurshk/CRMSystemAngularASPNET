@@ -9,6 +9,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { ListAccountsComponent } from './list-accounts/list-accounts.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListAccountsComponent } from './list-accounts/list-accounts.component';
     CreateAccountComponent,
     UpdateAccountComponent,
     DeleteAccountComponent,
-    ListAccountsComponent
+    ListAccountsComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

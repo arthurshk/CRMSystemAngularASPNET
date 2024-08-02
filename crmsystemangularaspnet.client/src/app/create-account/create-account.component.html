@@ -1,1 +1,36 @@
-<p>create-account works!</p>
+<h2>Create Account</h2>
+<form [formGroup]="createAccountForm" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input formControlName="name" />
+  </label>
+  <div *ngIf="createAccountForm.get('name')?.invalid && createAccountForm.get('name')?.touched">
+    Name is required.
+  </div>
+
+  <label>
+    Email:
+    <input formControlName="email" />
+  </label>
+  <div *ngIf="createAccountForm.get('email')?.invalid && createAccountForm.get('email')?.touched">
+    Enter a valid email.
+  </div>
+
+  <label>
+    Age:
+    <input formControlName="age" type="number" />
+  </label>
+  <div *ngIf="createAccountForm.get('age')?.invalid && createAccountForm.get('age')?.touched">
+    Enter a valid age.
+  </div>
+
+  <label>
+    Address:
+    <input formControlName="address" />
+  </label>
+  <div *ngIf="createAccountForm.get('address')?.invalid && createAccountForm.get('address')?.touched">
+    Address is required.
+  </div>
+
+  <button type="submit" [disabled]="createAccountForm.invalid">Create</button>
+</form>
