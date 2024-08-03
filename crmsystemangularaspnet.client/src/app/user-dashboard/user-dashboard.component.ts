@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 export class UserDashboardComponent {
   constructor(private router: Router) { }
 
-  navigateToCreate() {
+  public navigateToCreate() {
     this.router.navigate(['/create-account']);
   }
 
-  navigateToList() {
+  public navigateToList() {
     this.router.navigate(['/list-accounts']);
   }
 }
