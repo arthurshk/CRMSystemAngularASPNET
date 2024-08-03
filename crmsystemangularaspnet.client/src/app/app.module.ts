@@ -1,30 +1,36 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
-import { AccountListComponent } from './account-list/account-list.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { ListAccountsComponent } from './list-accounts/list-accounts.component';
 import { UpdateAccountComponent } from './update-account/update-account.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
-import { ListAccountsComponent } from './list-accounts/list-accounts.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+
+const routes: Routes = [
+  { path: '', component: UserDashboardComponent },
+  { path: 'create-account', component: CreateAccountComponent },
+  { path: 'list-accounts', component: ListAccountsComponent },
+  { path: 'update-account/:id', component: UpdateAccountComponent },
+  { path: 'delete-account/:id', component: DeleteAccountComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccountListComponent,
     CreateAccountComponent,
+    ListAccountsComponent,
     UpdateAccountComponent,
     DeleteAccountComponent,
-    ListAccountsComponent,
     UserDashboardComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
-    AppRoutingModule,
-    FormsModule
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
