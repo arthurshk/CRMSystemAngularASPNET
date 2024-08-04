@@ -19,4 +19,8 @@ export class DeleteAccountComponent {
       this.router.navigate(['/list-accounts']);
     });
   }
+
+  public navigateToList() {
+    this.router.navigate(['/list-accounts']);
+  }
 }

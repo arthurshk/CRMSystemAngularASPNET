@@ -2,5 +2,5 @@
 <div *ngIf="account">
   <p>Are you sure you want to delete {{ account.name }}?</p>
   <button (click)="deleteAccount(account.id!)">Yes</button>
-  <button (click)="router.navigate(['/list-accounts'])">No</button>
+  <button (click)="navigateToList()">No</button>
 </div>
