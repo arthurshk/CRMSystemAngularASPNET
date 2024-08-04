@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppComponent } from './app.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
@@ -14,8 +15,8 @@ const routes: Routes = [
   { path: '', component: UserDashboardComponent },
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'list-accounts', component: ListAccountsComponent },
-  { path: 'update-account/:id', component: UpdateAccountComponent },
-  { path: 'delete-account/:id', component: DeleteAccountComponent },
+  { path: 'edit-account/:id', component: UpdateAccountComponent },
+  { path: 'delete-account/:id', component: DeleteAccountComponent }
 ];
 
 @NgModule({
@@ -30,7 +31,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule // Add if not already present
   ],
   providers: [],
   bootstrap: [AppComponent]

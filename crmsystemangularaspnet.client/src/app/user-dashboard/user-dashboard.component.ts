@@ -16,4 +16,12 @@ export class UserDashboardComponent {
   public navigateToList() {
     this.router.navigate(['/list-accounts']);
   }
+
+  public navigateToEdit(id: number) {
+    this.router.navigate([`/edit-account/${id}`]);
+  }
+
+  public navigateToDelete(id: number) {
+    this.router.navigate([`/delete-account/${id}`]);
+  }
 }

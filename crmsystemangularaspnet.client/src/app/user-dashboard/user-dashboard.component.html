@@ -1,4 +1,11 @@
-<div class="button-group">
-  <button (click)="navigateToCreate()">Create Account</button>
-  <button (click)="navigateToList()">List Accounts</button>
+<div class="container">
+  <h1>Welcome to the Account Management System</h1>
+  <p>Select an option below to manage accounts:</p>
+  <div class="button-group">
+    <button routerLink="/create-account">Create Account</button>
+    <button routerLink="/list-accounts">View Accounts</button>
+    <button routerLink="/edit-account/1">Edit Account</button>
+    <button routerLink="/delete-account/1">Delete Account</button>
+  </div>
 </div>
+<router-outlet></router-outlet>
