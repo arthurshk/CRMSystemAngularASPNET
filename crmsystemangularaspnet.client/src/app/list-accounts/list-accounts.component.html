@@ -1,3 +1,22 @@
-<div *ngFor="let account of accounts">
-  {{ account.name }} - {{ account.industry }}
+<div *ngIf="accounts?.length; else noAccounts">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Industry</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let account of accounts">
+      <td>{{ account.name }}</td>
+      <td>{{ account.industry }}</td>
+      <td>{{ account.email }}</td>
+      <td>
+        <a [routerLink]="['/edit-account', account.id]">Edit</a>
+        <a [routerLink]="['/delete-account', account.id]">Delete</a>
+      </td>
+    </tr>
+  </table>
 </div>
+<ng-template #noAccounts>
+  <p>No accounts available.</p>
+</ng-template>
