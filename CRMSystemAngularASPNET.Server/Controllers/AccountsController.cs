@@ -1,6 +1,9 @@
 ﻿using CRMSystemAngularASPNET.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 
 namespace CRMSystemAngularASPNET.Server.Controllers
 {
@@ -65,5 +68,4 @@ namespace CRMSystemAngularASPNET.Server.Controllers
             return NoContent();
         }
     }
-
 }

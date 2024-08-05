@@ -1,13 +1,17 @@
+using CRMSystemAngularASPNET.Server.Models; 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CrmContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-app.UseDefaultFiles();
-app.UseStaticFiles();
 
 if (app.Environment.IsDevelopment())
 {
@@ -16,11 +20,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
+app.MapControllers();
 app.MapFallbackToFile("/index.html");
 
 app.Run();
