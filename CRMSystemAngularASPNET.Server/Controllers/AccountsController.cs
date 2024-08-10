@@ -1,8 +1,9 @@
 ﻿using CRMSystemAngularASPNET.Server.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-[Route("api/[controller]")]
 [ApiController]
+[Route("api/[controller]")]
 public class AccountsController : ControllerBase
 {
     private readonly CrmContext _context;
@@ -17,24 +18,30 @@ public class AccountsController : ControllerBase
     {
         if (account == null)
         {
-            return BadRequest();
+            return BadRequest("Account data is null.");
         }
 
         _context.Accounts.Add(account);
         await _context.SaveChangesAsync();
-
         return CreatedAtAction(nameof(GetAccountById), new { id = account.Id }, account);
     }
 
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
+    {
+        return await _context.Accounts.ToListAsync();
+    }
+
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetAccountById(int id)
+    public async Task<ActionResult<Account>> GetAccountById(int id)
     {
         var account = await _context.Accounts.FindAsync(id);
+
         if (account == null)
         {
             return NotFound();
         }
 
-        return Ok(account);
+        return account;
     }
 }

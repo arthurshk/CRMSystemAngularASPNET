@@ -9,11 +9,21 @@ import { Account } from '../Models/Account';
 })
 export class ListAccountsComponent implements OnInit {
   accounts: Account[] = [];
+
   constructor(private accountService: AccountService) { }
 
-  ngOnInit() {
-    this.accountService.getAccounts().subscribe(accounts => {
-      this.accounts = accounts;
-    });
+  ngOnInit(): void {
+    this.loadAccounts();
+  }
+
+  loadAccounts(): void {
+    this.accountService.getAccounts().subscribe(
+      (data: Account[]) => {
+        this.accounts = data;
+      },
+      error => {
+        console.error('Error loading accounts:', error);
+      }
+    );
   }
 }
