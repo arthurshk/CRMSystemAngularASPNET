@@ -21,10 +21,18 @@ public class AccountsController : ControllerBase
             return BadRequest("Account data is null.");
         }
 
-        _context.Accounts.Add(account);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetAccountById), new { id = account.Id }, account);
+        try
+        {
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetAccountById), new { id = account.Id }, account);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
+
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
