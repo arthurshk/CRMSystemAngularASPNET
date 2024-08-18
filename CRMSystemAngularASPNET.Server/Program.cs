@@ -1,6 +1,5 @@
-using CRMSystemAngularASPNET.Server.Models; 
+using CRMSystemAngularASPNET.Server.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +11,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         policy =>
         {
-            policy.AllowAnyOrigin()
+            policy.WithOrigins("https://localhost:4200")
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         });
@@ -23,6 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 app.UseCors("AllowAll");
 
 app.UseDefaultFiles();
@@ -40,4 +40,3 @@ app.MapControllers();
 app.MapFallbackToFile("/index.html");
 
 app.Run();
-
